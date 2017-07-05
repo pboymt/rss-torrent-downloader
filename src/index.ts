@@ -4,6 +4,7 @@ import { downloadText, downloadFile } from "./download";
 import { parseXML } from "./parsexml";
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from "fs";
 import { join } from "path";
+import { log } from "./log";
 
 const currentDate = new Date();
 const dirs = {
@@ -40,10 +41,12 @@ if (!existsSync(dirs.date)) {
         let list = await parseXML(xml);
         writeFileSync('test.json', JSON.stringify(list));
         let tick = 0;
+        log(`Get Torrent List ${list.length}`);
         for (let item of list) {
             try {
                 if (await downloadFile(item.torrent, item.save)) {
-                    // console.log(`Torrent File Saved: ${item.title}`);
+                    log(item.torrent);
+                    log(`Torrent File Saved: ${item.title}`);
                     tick += 1;
                 }
             } catch (error) {
@@ -53,12 +56,13 @@ if (!existsSync(dirs.date)) {
                 return new Promise(res => {
                     setTimeout(() => {
                         res();
-                    }, 1000);
+                    }, 2000);
                 });
             });
         }
-        console.log(`Add ${tick} New Torents`);
+        log(`Add ${tick} New Torents`);
     } catch (error) {
         console.log(error);
+        log(error);
     }
 })();

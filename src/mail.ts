@@ -2,6 +2,7 @@ import { readdirSync, existsSync, mkdirSync, readFileSync, createReadStream } fr
 import { join } from "path";
 import * as jszip from 'jszip';
 import { createTransport } from 'nodemailer';
+import { log } from "./log";
 
 interface smtpConfig {
     host: string
@@ -32,8 +33,8 @@ export async function sendMail(filepath: string, config: smtpConfig = null) {
                 filename: 'output.zip'
             }]
         });
-        console.log(sentMessageInfo);
+        log(sentMessageInfo);
     } catch (error) {
-        console.log(error);
+        log(error);
     }
 }
