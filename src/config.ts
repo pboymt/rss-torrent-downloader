@@ -8,5 +8,6 @@ writeFileSync(join(__dirname, '../smtpconfig.json'), JSON.stringify({
     "auth": {
         "user": "123456789@qq.com",
         "pass": "password"
-    }
+    },
+    "to": "abcdefg@qq.com"
 }, null, 2));
