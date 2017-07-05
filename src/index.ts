@@ -39,10 +39,13 @@ if (!existsSync(dirs.date)) {
         // const xml = readFileSync(join(__dirname, '../test.xml'), 'utf-8');
         let list = await parseXML(xml);
         writeFileSync('test.json', JSON.stringify(list));
+        let tick = 0;
         for (let item of list) {
             try {
-                await downloadFile(item.torrent, item.save);
-                console.log(`Torrent File Saved: ${item.title}`);
+                if (await downloadFile(item.torrent, item.save)) {
+                    // console.log(`Torrent File Saved: ${item.title}`);
+                    tick += 1;
+                }
             } catch (error) {
                 throw error;
             }
@@ -54,6 +57,7 @@ if (!existsSync(dirs.date)) {
                 });
             });
         }
+        console.log(`Add ${tick} New Torents`);
     } catch (error) {
         console.log(error);
     }

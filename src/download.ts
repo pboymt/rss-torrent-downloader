@@ -26,9 +26,9 @@ export async function downloadText(url: string | URL | RequestOptions) {
 }
 
 export async function downloadFile(url: string | URL | RequestOptions, savePath: string) {
-    return new Promise<void>((resolve, reject) => {
+    return new Promise<string>((resolve, reject) => {
         if (existsSync(savePath)) {
-            return;
+            return null;
         }
         const req = get(url, function (res) {
             let writeStream = createWriteStream(savePath);
@@ -38,7 +38,7 @@ export async function downloadFile(url: string | URL | RequestOptions, savePath:
             res.pipe(writeStream);
             res.on('end', function () {
                 writeStream.end();
-                resolve();
+                resolve(savePath);
             });
             res.on('error', err => {
                 reject();

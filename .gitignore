@@ -2,6 +2,8 @@ node_modules
 bin
 dmhy
 
+src/qq.ts
+
 *.js
 *.xml
 *.json
