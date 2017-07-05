@@ -26,9 +26,9 @@ if (!existsSync(dirs.year)) {
 if (!existsSync(dirs.month)) {
     mkdirSync(dirs.month);
 }
-// if (!existsSync(dirs.predate)) {
-//     mkdirSync(dirs.predate);
-// }
+if (!existsSync(dirs.predate)) {
+    mkdirSync(dirs.predate);
+}
 if (!existsSync(dirs.date)) {
     mkdirSync(dirs.date);
 }
