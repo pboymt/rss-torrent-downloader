@@ -6,4 +6,5 @@ src/qq.ts
 
 *.js
 *.xml
-*.json
+smtpconfig.json
+test.json

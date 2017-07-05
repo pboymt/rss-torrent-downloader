@@ -1,0 +1,30 @@
+{
+  "name": "rss-torrent-downloader",
+  "version": "0.0.1",
+  "description": "RSS Torrent Downloader",
+  "main": "bin/index",
+  "scripts": {
+    "compile": "tsc",
+    "catch": "node bin/index",
+    "mail": "node bin/pack",
+    "config": "node bin/config"
+  },
+  "author": "pboymt",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jszip": "0.0.33",
+    "@types/node": "^8.0.7",
+    "@types/nodemailer": "^1.3.33",
+    "@types/xml2js": "^0.4.0",
+    "typescript": "^2.4.1"
+  },
+  "dependencies": {
+    "jszip": "^3.1.3",
+    "nodemailer": "^4.0.1",
+    "xml2js": "^0.4.17"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pboymt/rss-torrent-downloader.git"
+  }
+}
